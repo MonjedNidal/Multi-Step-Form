@@ -2,8 +2,13 @@ import "../css/PlanForm.css";
 import { useState } from "react";
 import Plans from "./Plans";
 import Switch from "./Switch";
-function PlanForm({ isYearlyPlan, setIsYearlyPlan, plansData }) {
-  const [selectedPlan, setSelectedPlan] = useState(null);
+function PlanForm({
+  selectedPlan,
+  setSelectedPlan,
+  isYearlyPlan,
+  setIsYearlyPlan,
+  plansData,
+}) {
 
   const handlePlanClick = (id) => {
     if (selectedPlan === id) {

@@ -1,8 +1,7 @@
 import "../css/AddOns.css";
 import AddOn from "./AddOn";
 import { useState } from "react";
-function AddOnsForm({ isYearlyPlan, addOnsData }) {
-  const [checkedAddOns, setCheckedAddOns] = useState([]);
+function AddOnsForm({ isYearlyPlan, addOnsData, checkedAddOns, setCheckedAddOns }) {
 
   const handleCheckedAddOnsChanged = (id, addOnChecked) => {
     if (addOnChecked) {

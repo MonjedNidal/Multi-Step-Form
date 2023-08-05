@@ -6,7 +6,7 @@ import PersonalInfoForm from "./PersonalInfoForm";
 import PlanForm from "./PlanForm";
 import SideBar from "./SideBar";
 import AddOnsForm from "./AddOnsForm";
-
+import SummaryPage from "./SummaryPage";
 function MainForm() {
   const [stepCounter, setStepCounter] = useState(3);
   const [nameError, setNameError] = useState(false);
@@ -17,6 +17,9 @@ function MainForm() {
   const [emailValue, setEmailValue] = useState("s");
   const [phoneValue, setPhoneValue] = useState("s");
   const [isYearlyPlan, setIsYearlyPlan] = useState(false);
+
+  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [checkedAddOns, setCheckedAddOns] = useState([]);
 
   const plansData = [
     {
@@ -93,14 +96,21 @@ function MainForm() {
           />
         ) : stepCounter === 2 ? (
           <PlanForm
+            selectedPlan={selectedPlan}
+            setSelectedPlan={setSelectedPlan}
             plansData={plansData}
             isYearlyPlan={isYearlyPlan}
             setIsYearlyPlan={setIsYearlyPlan}
           />
         ) : stepCounter === 3 ? (
-          <AddOnsForm addOnsData={addOnsData} isYearlyPlan={isYearlyPlan} />
+          <AddOnsForm
+            checkedAddOns={checkedAddOns}
+            setCheckedAddOns={setCheckedAddOns}
+            addOnsData={addOnsData}
+            isYearlyPlan={isYearlyPlan}
+          />
         ) : (
-          "4"
+          <SummaryPage />
         )}
         <div className="d-flex flex-row justify-content-between my-3">
           <a
