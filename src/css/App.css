@@ -38,36 +38,6 @@
   border-radius: 10px;
 }
 
-.sidebar {
-  color: var(--Alabaster);
-}
-.sidebar .stepNumber {
-  font-weight: 500 !important;
-  border-radius: 50%;
-  border: 1px solid var(--White);
-  height: 1.7rem;
-  width: 1.7rem;
-  text-align: center;
-  margin-right: 0.7rem !important;
-  font-size: 16px;
-  font-weight: 400;
-  padding-top: 0.2rem !important;
-}
-
-.sidebar .stepText p {
-  font-size: 14px;
-  text-transform: uppercase;
-  color: var(--CoolGray);
-}
-.activeStep {
-  background: var(--LightBlue) !important ;
-  color: var(--MarineBlue);
-}
-.sidebar .stepText h5 {
-  font-size: 16px;
-  text-transform: uppercase;
-  font-weight: 500 !important;
-}
 .formsContainer {
   padding: 3rem 3rem 0rem 4rem !important;
   width: 100%;
@@ -76,7 +46,7 @@
   margin-bottom: 2rem !important;
 }
 .formHeader h1 {
-  color: var(--MarineBlue);
+  color: var(--MarineBlue) !important;
   margin-bottom: 0.4rem !important;
 }
 .formHeader p {
@@ -100,13 +70,13 @@
 }
 
 .nextBtn {
-  margin-top: 1.5rem !important;
   border-radius: 8px;
   background-color: var(--MarineBlue);
   color: var(--White);
   text-decoration: none;
   font-weight: 500;
   padding: 0.6rem 1rem !important;
+  transition: 0.2s;
 }
 .nextBtn:hover {
   background-color: hsl(213, 91%, 27%);
@@ -118,6 +88,7 @@
   font-weight: 500;
   height: 1.5rem;
   align-self: center;
+  transition: 0.2s;
 }
 .backBtn:hover {
   color: var(--MarineBlue);

@@ -2,16 +2,17 @@ import "../css/PlanForm.css";
 import { useState } from "react";
 import Plans from "./Plans";
 import Switch from "./Switch";
-function PlanForm() {
-  const [isYearlyPlan, setIsYearlyPlan] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("");
-  const handlePlanClick = (plan) => {
-    if (selectedPlan === plan) {
-      setSelectedPlan("");
+function PlanForm({ isYearlyPlan, setIsYearlyPlan, plansData }) {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
+  const handlePlanClick = (id) => {
+    if (selectedPlan === id) {
+      setSelectedPlan(null);
     } else {
-      setSelectedPlan(plan);
+      setSelectedPlan(id);
     }
   };
+
   const handlePlanIntervalChange = (isYearly) => {
     setIsYearlyPlan(isYearly);
   };
@@ -23,11 +24,12 @@ function PlanForm() {
         <p>You have the option of monthly or yearly billing.</p>
       </div>
       <Plans
+        plansData={plansData}
         isYearlyPlan={isYearlyPlan}
         selectedPlan={selectedPlan}
         handlePlanClick={handlePlanClick}
       />
-      <div className="planTime d-flex justify-content-center py-3 my-4">
+      <div className="planTime d-flex justify-content-center py-3">
         <h6 className={`${!isYearlyPlan ? "checkedTime" : ""}`}>Monthly</h6>
         <Switch handlePlanIntervalChange={handlePlanIntervalChange} />
         <h6 className={`${isYearlyPlan ? "checkedTime" : ""}`}>Yearly</h6>

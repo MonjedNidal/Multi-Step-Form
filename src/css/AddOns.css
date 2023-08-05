@@ -1,0 +1,55 @@
+:root {
+  /* ## Colors */
+
+  /* ### Primary */
+
+  --MarineBlue: hsl(213, 96%, 18%);
+  --PurplishBlue: hsl(243, 100%, 62%);
+  --PastelBlue: hsl(228, 100%, 84%);
+  --LightBlue: hsl(206, 94%, 87%);
+  --StrawberryRed: hsl(354, 84%, 57%);
+
+  /* ### Neutral */
+
+  --CoolGray: hsl(231, 11%, 63%);
+  --LightGray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+.addOn {
+  padding: 0.4rem 1rem !important;
+  height: fit-content;
+  cursor: pointer;
+  border: 1px solid rgb(191, 191, 191);
+  border-radius: 8px;
+  transition: 0.2s;
+  margin-bottom: 1rem !important;
+}
+
+.addOn h6 {
+  color: var(--MarineBlue);
+  font-weight: 700;
+}
+.addOn p {
+  color: var(--CoolGray);
+}
+.addOnText {
+  margin-left: 1rem;
+  font-size: 14px;
+  margin: 1rem !important;
+}
+.form-check {
+  min-height: unset;
+}
+.form-check-input {
+  width: 1.2rem !important;
+  height: 1.2rem !important;
+  cursor: pointer;
+}
+
+.addOnPrice {
+  font-size: 14px;
+  color: var(--PurplishBlue);
+}
