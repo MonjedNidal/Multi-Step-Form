@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import sidebarImg from "../assets/images/bg-sidebar-desktop.svg";
 import PersonalInfoForm from "./PersonalInfoForm";
+import PlanForm from "./PlanForm";
+
 function MainForm() {
-  const [stepCounter, setStepCounter] = useState(1);
+  const [stepCounter, setStepCounter] = useState(2);
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
@@ -100,7 +102,7 @@ function MainForm() {
             setPhoneError={setPhoneError}
           />
         ) : stepCounter === 2 ? (
-          <form></form>
+          <PlanForm />
         ) : stepCounter === 3 ? (
           "3"
         ) : (

@@ -69,16 +69,17 @@
   font-weight: 500 !important;
 }
 .formsContainer {
-  padding: 3rem 1rem 0rem 4rem !important;
+  padding: 3rem 3rem 0rem 4rem !important;
+  width: 100%;
 }
-.personalInfoForm .formHeader {
+.formHeader {
   margin-bottom: 2rem !important;
 }
-.personalInfoForm .formHeader h1 {
+.formHeader h1 {
   color: var(--MarineBlue);
   margin-bottom: 0.4rem !important;
 }
-.personalInfoForm .formHeader p {
+.formHeader p {
   color: var(--CoolGray);
 }
 .personalInfoForm label,
