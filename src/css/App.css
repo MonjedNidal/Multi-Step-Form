@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+:root {
+  /* ## Colors */
+
+  /* ### Primary */
+
+  --MarineBlue: hsl(213, 96%, 18%);
+  --PurplishBlue: hsl(243, 100%, 62%);
+  --PastelBlue: hsl(228, 100%, 84%);
+  --LightBlue: hsl(206, 94%, 87%);
+  --StrawberryRed: hsl(354, 84%, 57%);
+
+  /* ### Neutral */
+
+  --CoolGray: hsl(231, 11%, 63%);
+  --LightGray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+* {
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.App {
+  height: 100vh;
+  background-color: var(--Magnolia);
+  font-family: "Ubuntu", sans-serif;
+}
+
+.mainform {
+  width: 54rem;
+  background-color: var(--White);
+  padding: 1rem !important;
+  border-radius: 10px;
+}
+
+.sidebar {
+  color: var(--Alabaster);
+}
+.sidebar .stepNumber {
+  font-weight: 500 !important;
+  border-radius: 50%;
+  border: 1px solid var(--White);
+  height: 1.7rem;
+  width: 1.7rem;
+  text-align: center;
+  margin-right: 0.7rem !important;
+  font-size: 16px;
+  font-weight: 400;
+  padding-top: 0.2rem !important;
+}
+
+.sidebar .stepText p {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--CoolGray);
+}
+.activeStep {
+  background: var(--LightBlue) !important ;
+  color: var(--MarineBlue);
+}
+.sidebar .stepText h5 {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-weight: 500 !important;
+}
+.formsContainer {
+  padding: 3rem 1rem 0rem 4rem !important;
+}
+.personalInfoForm .formHeader {
+  margin-bottom: 2rem !important;
+}
+.personalInfoForm .formHeader h1 {
+  color: var(--MarineBlue);
+  margin-bottom: 0.4rem !important;
+}
+.personalInfoForm .formHeader p {
+  color: var(--CoolGray);
+}
+.personalInfoForm label,
+.personalInfoForm input,
+.personalInfoForm span {
+  font-weight: 500;
+}
+.personalInfoForm span {
+  color: var(--StrawberryRed);
+}
+.personalInfoForm input {
+  margin-top: 0.3rem !important;
+  height: 2.6rem;
+  padding: 1.6rem 1rem !important;
+  border: 1px solid var(--LightGray);
+  border-radius: 7px;
+  margin-bottom: 1.4rem !important;
+}
+
+.nextBtn {
+  margin-top: 1.5rem !important;
+  border-radius: 8px;
+  background-color: var(--MarineBlue);
+  color: var(--White);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.6rem 1rem !important;
+}
+.nextBtn:hover {
+  background-color: hsl(213, 91%, 27%);
+}
+.backBtn {
+  margin-top: 1rem !important;
+  text-decoration: none;
+  color: var(--CoolGray);
+  font-weight: 500;
+  height: 1.5rem;
+  align-self: center;
+}
+.backBtn:hover {
+  color: var(--MarineBlue);
+}
+.inputError {
+  border: 1px solid var(--StrawberryRed) !important;
+}
