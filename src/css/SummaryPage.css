@@ -1,0 +1,79 @@
+:root {
+  /* ## Colors */
+
+  /* ### Primary */
+
+  --MarineBlue: hsl(213, 96%, 18%);
+  --PurplishBlue: hsl(243, 100%, 62%);
+  --PastelBlue: hsl(228, 100%, 84%);
+  --LightBlue: hsl(206, 94%, 87%);
+  --StrawberryRed: hsl(354, 84%, 57%);
+
+  /* ### Neutral */
+
+  --CoolGray: hsl(231, 11%, 63%);
+  --LightGray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+.summary {
+  background-color: var(--Magnolia) !important;
+  border-radius: 8px;
+  padding: 1.4rem 1.4rem 0rem 1.4rem !important;
+}
+.summary a {
+  color: var(--CoolGray);
+  font-size: 14px;
+}
+.summary a:hover {
+  color: var(--PurplishBlue);
+}
+.summary .planSummery {
+  margin-bottom: 1.3rem !important;
+}
+.planSummery h6,
+.planSummery span {
+  font-weight: 700;
+  color: var(--MarineBlue);
+}
+.addOnSummary {
+  margin: 1.2rem 0rem !important;
+}
+.addOnSummary p {
+  color: var(--CoolGray);
+}
+.addOnSummary span {
+  color: var(--MarineBlue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.total {
+  padding: 1.4rem 1.4rem 0rem 1.4rem !important;
+  color: var(--CoolGray);
+  font-weight: 400 !important;
+}
+.total h6 {
+  font-weight: 400 !important;
+}
+.total .totalPrice {
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--PurplishBlue);
+}
+
+@media (max-width: 700px) {
+  .planSummery {
+    display: flex !important;
+  }
+  .addOnSummary {
+    display: flex !important;
+    padding-bottom: 1rem !important;
+  }
+  .total {
+    padding: 0rem 1.4rem 1rem 1.4rem !important;
+    display: flex !important;
+  }
+}

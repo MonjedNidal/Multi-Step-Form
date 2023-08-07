@@ -1,5 +1,5 @@
-import { useState } from "react";
-
+import { useState, useContext, useEffect } from "react";
+import { CheckedAddOnsContext } from "../App";
 function AddOn({
   id,
   name,
@@ -9,11 +9,24 @@ function AddOn({
   isYearlyPlan,
   handleCheckedAddOnsChanged,
 }) {
-  const [addOnChecked, setAddOnChecked] = useState(false);
+  const { checkedAddOns } = useContext(CheckedAddOnsContext);
+  let checked = false;
+  if (checkedAddOns.find((addOn) => addOn.id === id)) {
+    checked = true;
+  }
+
+  const [addOnChecked, setAddOnChecked] = useState(checked);
+  let price = isYearlyPlan ? yearlyPrice : monthlyPrice;
+
+  useEffect(() => {
+    price = isYearlyPlan ? yearlyPrice : monthlyPrice;
+  }, [isYearlyPlan]);
+
   const handleAddOnChecked = () => {
     setAddOnChecked(!addOnChecked);
-    handleCheckedAddOnsChanged(id, addOnChecked);
+    handleCheckedAddOnsChanged({ id, name }, addOnChecked);
   };
+
   return (
     <div
       onClick={handleAddOnChecked}
@@ -21,7 +34,7 @@ function AddOn({
         addOnChecked ? "selected" : ""
       }`}
     >
-      <div className="d-flex align-items-center">
+      <div className="addOnCheckbox d-flex align-items-center">
         <div className="form-check">
           <input
             className="form-check-input mx-1"
@@ -30,14 +43,14 @@ function AddOn({
             onChange={() => {}}
           />
         </div>
+        {/* <div></div> */}
         <div className="addOnText">
           <h6>{name}</h6>
           <p>{description}</p>
         </div>
       </div>
       <span className="addOnPrice">
-        +${isYearlyPlan ? yearlyPrice : monthlyPrice}/
-        {isYearlyPlan ? "yr" : "mo"}
+        +${price}/{isYearlyPlan ? "yr" : "mo"}
       </span>
     </div>
   );

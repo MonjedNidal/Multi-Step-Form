@@ -1,68 +1,25 @@
-import React, { useState } from "react";
-import arcadeSVG from "../assets/images/icon-arcade.svg";
-import advancedSVG from "../assets/images/icon-advanced.svg";
-import proSVG from "../assets/images/icon-pro.svg";
+import { useState, useEffect } from "react";
 import PersonalInfoForm from "./PersonalInfoForm";
 import PlanForm from "./PlanForm";
 import SideBar from "./SideBar";
 import AddOnsForm from "./AddOnsForm";
 import SummaryPage from "./SummaryPage";
-function MainForm() {
-  const [stepCounter, setStepCounter] = useState(3);
+import LastPage from "./LastPage";
+import ButtonsSet from "./ButtonsSet";
+
+function MainForm({ stepCounter, setStepCounter }) {
   const [nameError, setNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
 
-  const [nameValue, setNameValue] = useState("s");
-  const [emailValue, setEmailValue] = useState("s");
-  const [phoneValue, setPhoneValue] = useState("s");
+  const [nameValue, setNameValue] = useState("");
+  const [emailValue, setEmailValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
   const [isYearlyPlan, setIsYearlyPlan] = useState(false);
 
-  const [selectedPlan, setSelectedPlan] = useState(null);
-  const [checkedAddOns, setCheckedAddOns] = useState([]);
+  const [selectedPlan, setSelectedPlan] = useState({ id: 1, name: "Advanced" });
 
-  const plansData = [
-    {
-      name: "Arcade",
-      monthlyPrice: "9",
-      yearlyPrice: "90",
-      imgSource: arcadeSVG,
-    },
-    {
-      name: "Advanced",
-      monthlyPrice: "12",
-      yearlyPrice: "120",
-      imgSource: advancedSVG,
-    },
-    {
-      name: "Pro",
-      monthlyPrice: "15",
-      yearlyPrice: "150",
-      imgSource: proSVG,
-    },
-  ];
-  const addOnsData = [
-    {
-      name: "Online service",
-      description: "Access to multiplayer games",
-      monthlyPrice: 1,
-      yearlyPrice: 10,
-    },
-    {
-      name: "Larger storage",
-      description: "Extra 1TB of cloud save",
-      monthlyPrice: 2,
-      yearlyPrice: 20,
-    },
-    {
-      name: "Customizable Profile",
-      description: "Custom theme on your profile",
-      monthlyPrice: 2,
-      yearlyPrice: 20,
-    },
-  ];
-
-  const handleSubmitPersonalInfo = () => {
+  const handleNextPageClicked = () => {
     if (!nameValue || !emailValue || !phoneValue) {
       if (!nameValue) {
         setNameError(true);
@@ -74,60 +31,92 @@ function MainForm() {
         setPhoneError(true);
       }
     } else {
-      setStepCounter(stepCounter + 1);
+      if (stepCounter === 2 && !selectedPlan) {
+        alert("Please Select a plan");
+      } else {
+        setStepCounter(stepCounter + 1);
+      }
     }
   };
 
+  const [pageWidth, setPageWidth] = useState(window.innerWidth);
+
+  // Function to update the page width on window resize
+  const handleResize = () => {
+    setPageWidth(window.innerWidth);
+  };
+
+  // Add a resize event listener when the component mounts
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div className="mainform d-flex">
-      <SideBar stepCounter={stepCounter} />
-      <div className="formsContainer  d-flex flex-column justify-content-between">
-        {stepCounter === 1 ? (
-          <PersonalInfoForm
-            setNameValue={setNameValue}
-            setPhoneValue={setPhoneValue}
-            setEmailValue={setEmailValue}
-            nameError={nameError}
-            emailError={emailError}
-            phoneError={phoneError}
-            setNameError={setNameError}
-            setEmailError={setEmailError}
-            setPhoneError={setPhoneError}
-          />
-        ) : stepCounter === 2 ? (
-          <PlanForm
-            selectedPlan={selectedPlan}
-            setSelectedPlan={setSelectedPlan}
-            plansData={plansData}
-            isYearlyPlan={isYearlyPlan}
-            setIsYearlyPlan={setIsYearlyPlan}
-          />
-        ) : stepCounter === 3 ? (
-          <AddOnsForm
-            checkedAddOns={checkedAddOns}
-            setCheckedAddOns={setCheckedAddOns}
-            addOnsData={addOnsData}
-            isYearlyPlan={isYearlyPlan}
-          />
-        ) : (
-          <SummaryPage />
-        )}
-        <div className="d-flex flex-row justify-content-between my-3">
-          <a
-            onClick={() => {
-              setStepCounter(stepCounter - 1);
-            }}
-            className="backBtn"
-            href="#s"
-          >
-            {stepCounter > 1 ? "Go Back" : ""}
-          </a>
-          <a onClick={handleSubmitPersonalInfo} className=" nextBtn" href="#-">
-            Next Step
-          </a>
+    <>
+      <div className="mainform d-flex">
+        <SideBar stepCounter={stepCounter} />
+        <div className="formsContainer  d-flex flex-column justify-content-between">
+          {stepCounter === 1 ? (
+            <PersonalInfoForm
+              setNameValue={setNameValue}
+              setPhoneValue={setPhoneValue}
+              setEmailValue={setEmailValue}
+              nameError={nameError}
+              emailValue={emailValue}
+              nameValue={nameValue}
+              phoneValue={phoneValue}
+              emailError={emailError}
+              phoneError={phoneError}
+              setNameError={setNameError}
+              setEmailError={setEmailError}
+              setPhoneError={setPhoneError}
+            />
+          ) : stepCounter === 2 ? (
+            <PlanForm
+              selectedPlan={selectedPlan}
+              setSelectedPlan={setSelectedPlan}
+              isYearlyPlan={isYearlyPlan}
+              setIsYearlyPlan={setIsYearlyPlan}
+            />
+          ) : stepCounter === 3 ? (
+            <AddOnsForm isYearlyPlan={isYearlyPlan} />
+          ) : stepCounter === 4 ? (
+            <SummaryPage
+              isYearlyPlan={isYearlyPlan}
+              selectedPlan={selectedPlan}
+              setStepCounter={setStepCounter}
+            />
+          ) : (
+            <LastPage />
+          )}
+          {pageWidth > 700 ? (
+            <ButtonsSet
+              stepCounter={stepCounter}
+              setStepCounter={setStepCounter}
+              className={"buttons"}
+              handleNextPageClicked={handleNextPageClicked}
+            />
+          ) : (
+            ""
+          )}
         </div>
       </div>
-    </div>
+      {pageWidth < 700 && stepCounter <= 4 ? (
+        <ButtonsSet
+          stepCounter={stepCounter}
+          setStepCounter={setStepCounter}
+          className={"smallButtonsSet"}
+          handleNextPageClicked={handleNextPageClicked}
+        />
+      ) : (
+        ""
+      )}
+    </>
   );
 }
 

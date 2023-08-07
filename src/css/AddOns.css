@@ -53,3 +53,18 @@
   font-size: 14px;
   color: var(--PurplishBlue);
 }
+
+@media (max-width: 700px) {
+  .addOn {
+    display: flex !important;
+    height: 6rem;
+    padding: 0rem 0.6rem 0rem 0.6rem !important;
+  }
+  .addOnText {
+    margin: 0rem 0.3rem 0rem 0.4rem !important;
+    font-size: 0.84em !important;
+  }
+  .addOnCheckbox {
+    display: flex !important;
+  }
+}

@@ -1,16 +1,22 @@
+import { useContext } from "react";
 import "../css/AddOns.css";
 import AddOn from "./AddOn";
-import { useState } from "react";
-function AddOnsForm({ isYearlyPlan, addOnsData, checkedAddOns, setCheckedAddOns }) {
+import { CheckedAddOnsContext } from "../App";
+import { addOnsData } from "../data/data";
+function AddOnsForm({ isYearlyPlan }) {
+  const { checkedAddOns, setCheckedAddOns } = useContext(CheckedAddOnsContext);
 
-  const handleCheckedAddOnsChanged = (id, addOnChecked) => {
-    if (addOnChecked) {
-      setCheckedAddOns([...checkedAddOns, id]);
+  const handleCheckedAddOnsChanged = (addOn, addOnChecked) => {
+    if (!addOnChecked) {
+      setCheckedAddOns([...checkedAddOns, addOn]);
     } else {
-      let newArr = checkedAddOns;
-      setCheckedAddOns(newArr.filter((addOn) => addOn !== id));
+      const updatedAddOns = checkedAddOns.filter(
+        (selectedAddOn) => selectedAddOn.id !== addOn.id
+      );
+      setCheckedAddOns(updatedAddOns);
     }
   };
+
   const addOnsArray = addOnsData.map((addOn, index) => (
     <div key={addOn.name}>
       <AddOn
@@ -24,9 +30,8 @@ function AddOnsForm({ isYearlyPlan, addOnsData, checkedAddOns, setCheckedAddOns 
       />
     </div>
   ));
-
   return (
-    <div className="">
+    <div>
       <div className="formHeader">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>

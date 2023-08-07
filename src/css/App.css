@@ -25,6 +25,14 @@
   padding: 0px !important;
 }
 
+h1 {
+  font-size: 2.1em;
+}
+body {
+  background-color: var(--Magnolia);
+  padding: 2rem 2rem -2rem 2rem !important;
+  /* overflow: hidden; */
+}
 .App {
   height: 100vh;
   background-color: var(--Magnolia);
@@ -33,6 +41,7 @@
 
 .mainform {
   width: 54rem;
+  height: fit-content;
   background-color: var(--White);
   padding: 1rem !important;
   border-radius: 10px;
@@ -41,6 +50,7 @@
 .formsContainer {
   padding: 3rem 3rem 0rem 4rem !important;
   width: 100%;
+  transition: all ease 0.2s;
 }
 .formHeader {
   margin-bottom: 2rem !important;
@@ -59,6 +69,9 @@
 }
 .personalInfoForm span {
   color: var(--StrawberryRed);
+}
+.personalInfoForm label {
+  color: var(--MarineBlue);
 }
 .personalInfoForm input {
   margin-top: 0.3rem !important;
@@ -82,7 +95,6 @@
   background-color: hsl(213, 91%, 27%);
 }
 .backBtn {
-  margin-top: 1rem !important;
   text-decoration: none;
   color: var(--CoolGray);
   font-weight: 500;
@@ -95,4 +107,63 @@
 }
 .inputError {
   border: 1px solid var(--StrawberryRed) !important;
+}
+
+@media (max-height: 570px) {
+  .mainform {
+    height: 30rem !important;
+  }
+  .formsContainer {
+    padding: 2rem 3rem 0rem 4rem !important;
+  }
+  .formHeader {
+    margin-bottom: 1rem !important;
+  }
+  .personalInfoForm input {
+    padding: 0px 0px 0px 8px !important;
+    margin-bottom: 13px !important;
+  }
+  .sidebar img {
+    height: 28rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .d-flex {
+    display: block !important;
+  }
+  .App {
+    position: relative;
+    overflow: hidden;
+  }
+  .mainform {
+    padding: 0px !important;
+    position: relative !important;
+  }
+  .formsContainer {
+    padding: 1.5rem !important;
+
+    position: absolute !important;
+    z-index: 4;
+    top: 34%;
+    left: 6vw;
+    background-color: var(--White);
+    width: 90vw;
+    border-radius: 8px;
+  }
+  .textInput {
+    width: 100% !important;
+  }
+  .buttons {
+    display: flex !important;
+  }
+  .smallButtonsSet {
+    position: absolute;
+    bottom: 0px;
+    background-color: var(--White);
+    display: flex !important;
+    width: 100%;
+    padding: 1rem 2rem 1rem 2rem !important;
+    margin: 0px !important;
+  }
 }

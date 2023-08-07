@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "../css/Switch.css"; // Import custom CSS for switch styling
 
-const Switch = ({ handlePlanIntervalChange }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const Switch = ({ handlePlanIntervalChange, isYearlyPlan }) => {
+  const [isChecked, setIsChecked] = useState(isYearlyPlan);
 
   const handleSwitchChange = (e) => {
     setIsChecked(e.target.checked);

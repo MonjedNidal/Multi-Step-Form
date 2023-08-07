@@ -1,20 +1,20 @@
 import "../css/PlanForm.css";
-import { useState } from "react";
 import Plans from "./Plans";
 import Switch from "./Switch";
+import { plansData } from "../data/data";
 function PlanForm({
   selectedPlan,
   setSelectedPlan,
   isYearlyPlan,
   setIsYearlyPlan,
-  plansData,
 }) {
-
-  const handlePlanClick = (id) => {
-    if (selectedPlan === id) {
-      setSelectedPlan(null);
-    } else {
-      setSelectedPlan(id);
+  const handlePlanClick = (plan) => {
+    if (selectedPlan.id !== null) {
+      if (selectedPlan.id !== plan.id) {
+        setSelectedPlan(plan);
+        console.log(plan);
+      }
+      return;
     }
   };
 
@@ -36,7 +36,10 @@ function PlanForm({
       />
       <div className="planTime d-flex justify-content-center py-3">
         <h6 className={`${!isYearlyPlan ? "checkedTime" : ""}`}>Monthly</h6>
-        <Switch handlePlanIntervalChange={handlePlanIntervalChange} />
+        <Switch
+          isYearlyPlan={isYearlyPlan}
+          handlePlanIntervalChange={handlePlanIntervalChange}
+        />
         <h6 className={`${isYearlyPlan ? "checkedTime" : ""}`}>Yearly</h6>
       </div>
     </form>
