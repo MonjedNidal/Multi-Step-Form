@@ -45,14 +45,17 @@ function SummaryPage({ setStepCounter, isYearlyPlan, selectedPlan }) {
               {selectedPlan && selectedPlan.name}(
               {`${isYearlyPlan ? "Yearly" : "Monthly"}`})
             </h6>
-            <a
-              href="#"
-              onClick={() => {
-                setStepCounter(2);
-              }}
-            >
-              Change
-            </a>
+            {
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a
+                href="#"
+                onClick={() => {
+                  setStepCounter(2);
+                }}
+              >
+                Change
+              </a>
+            }
           </div>
           <span className="planPrice">{`$${planPrice}/${
             isYearlyPlan ? "yr" : "mo"
